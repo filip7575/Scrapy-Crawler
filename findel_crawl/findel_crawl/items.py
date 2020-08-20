@@ -9,8 +9,8 @@ import scrapy
 
 class findelItem(scrapy.Item):
     
-    link = scrapy.Field()     #链接
-    img = scrapy.Field()      #缩略图
-    title = scrapy.Field() #商品标题
-    code = scrapy.Field()   #商品编号
-    price = scrapy.Field()    #商品价格
+    link = scrapy.Field()    
+    img = scrapy.Field()     
+    title = scrapy.Field() 
+    code = scrapy.Field()   
+    price = scrapy.Field()
