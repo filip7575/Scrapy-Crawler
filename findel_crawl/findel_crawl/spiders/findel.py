@@ -31,10 +31,10 @@ class FindelSpider(scrapy.Spider):
             yield item
             
         #response.xpath('//ul/li/a/@href[substring-after(.,"p=")]/@data-page')
-        # Sacamos [u'/products/?p=1', u'/products/?p=2', u'/products/?p=3']
-        if response.css('.pager__link page-link page-link--next::attr(data-page)').extract_first() is not None: # 如果有下一页标签,没有表示结束了
+        # take out [u'/products/?p=1', u'/products/?p=2', u'/products/?p=3']
+        if response.css('.pager__link page-link page-link--next::attr(data-page)').extract_first() is not None:
             page = response.css('.pager__link page-link page-link--next::attr(data-page)').extract_first()
-            if page<3: #测试两页试试
+            if page<3:
                 next = "?p=" + page
                 url = response.urljoin(next)
                 yield scrapy.Request(url=url,callback=self.parse)
